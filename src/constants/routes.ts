@@ -1,6 +1,6 @@
 // routes.ts
 export const ROUTES = {
-  HOME: '/',
+  LANDING: '/',
   USERS: '/users',
   BLOGS: '/blogs',
   LOGIN: '/login',
