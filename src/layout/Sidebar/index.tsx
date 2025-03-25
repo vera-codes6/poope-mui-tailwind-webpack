@@ -6,7 +6,6 @@ import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import MenuContent from '@/layout/Sidebar/MenuContent'
-import OptionsMenu from '@/components/OptionsMenu'
 
 const drawerWidth = 240
 
@@ -76,7 +75,6 @@ export default function Sidebar() {
             riley@email.com
           </Typography>
         </Box>
-        <OptionsMenu />
       </Stack>
     </Drawer>
   )

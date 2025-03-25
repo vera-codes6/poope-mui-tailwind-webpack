@@ -5,20 +5,9 @@ import type {} from '@mui/x-data-grid-pro/themeAugmentation'
 import type {} from '@mui/x-tree-view/themeAugmentation'
 import CssBaseline from '@mui/material/CssBaseline'
 import AppTheme from '@/theme/AppTheme'
-import {
-  chartsCustomizations,
-  dataGridCustomizations,
-  datePickersCustomizations,
-  treeViewCustomizations
-} from '@/theme/customizations'
 import router from './routes'
 
-const xThemeComponents = {
-  ...chartsCustomizations,
-  ...dataGridCustomizations,
-  ...datePickersCustomizations,
-  ...treeViewCustomizations
-}
+import 'keen-slider/keen-slider.min.css'
 
 export default function App(props: { disableCustomTheme?: boolean }) {
   return (
