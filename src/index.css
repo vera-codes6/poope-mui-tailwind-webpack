@@ -26,3 +26,20 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555; /* Thumb color on hover */
 }
+
+@keyframes scrollDown {
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+.scroll-down {
+  cursor: pointer;
+  animation-name: scrollDown;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+}

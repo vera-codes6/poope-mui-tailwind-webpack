@@ -1,8 +1,9 @@
-import BlogCard from '@/components/BlogCard'
+import { useKeenSlider } from 'keen-slider/react'
+
+import { Box, Container, Stack, styled, useTheme } from '@mui/material'
+import { BlogCard } from '@/components/Card'
 import { Section, SectionTitle } from '@/components/Section/'
 import { colors } from '@/theme/themePrimitives'
-import { Box, Container, Stack, styled, Typography, useTheme } from '@mui/material'
-import { useKeenSlider } from 'keen-slider/react'
 
 const UpdatingBox = styled(Section)(({ theme }) => ({
   justifyContent: 'center',
@@ -18,17 +19,18 @@ export const Updating = (props: any) => {
 
   const [sliderRef, instanceSliderRef] = useKeenSlider<HTMLDivElement>({
     slides: {
-      perView: 3,
+      perView: 'auto',
       spacing: 50
-    },
-    breakpoints: {
-      [`(max-width: 1000px)`]: {
-        slides: { perView: 1.9, spacing: 48 }
-      },
-      [`(max-width: ${theme.breakpoints.values.sm}px)`]: {
-        slides: { perView: 1.3, spacing: 24 }
-      }
     }
+    // },
+    // breakpoints: {
+    //   [`(max-width: 1000px)`]: {
+    //     slides: { perView: 1.9, spacing: 48 }
+    //   },
+    //   [`(max-width: ${theme.breakpoints.values.sm}px)`]: {
+    //     slides: { perView: 1.3, spacing: 24 }
+    //   }
+    // }
   })
 
   return (
@@ -40,7 +42,16 @@ export const Updating = (props: any) => {
 
         <Box ref={sliderRef} className='keen-slider' sx={{ py: '50px' }}>
           {[1, 2, 3].map((value, index) => (
-            <Box key={index} className='keen-slider__slide' sx={{ overflow: 'visible !important', height: '100%' }}>
+            <Box
+              key={`index${index}`}
+              className='keen-slider__slide'
+              sx={{
+                overflow: 'visible !important',
+                height: '100%',
+                maxWidth: '347px !important',
+                minWidth: '347px !important'
+              }}
+            >
               <BlogCard blogIndex={value} />
             </Box>
           ))}

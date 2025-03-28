@@ -1,6 +1,8 @@
+import { useKeenSlider } from 'keen-slider/react'
+
 import { Section, SectionTitle } from '@/components/Section/'
 import { colors } from '@/theme/themePrimitives'
-import { Container, Stack, styled, Typography } from '@mui/material'
+import { Box, Container, Stack, styled, Typography } from '@mui/material'
 
 const RoadmapBox = styled(Section)(({ theme }) => ({
   justifyContent: 'center',
@@ -22,7 +24,7 @@ const RoadmapBox = styled(Section)(({ theme }) => ({
 
 const RoadmapImageBox = styled('img')({
   flexShrink: 0,
-  objectFit: 'cover'
+  height: 'auto'
 })
 
 const RoadmapCoinImage = styled('img')({
@@ -34,6 +36,22 @@ const RoadmapCoinImage = styled('img')({
 })
 
 export const Roadmap = (props: any) => {
+  const [sliderRef, instanceSliderRef] = useKeenSlider<HTMLDivElement>({
+    slides: {
+      perView: 'auto',
+      spacing: 10
+    }
+    // },
+    // breakpoints: {
+    //   [`(max-width: 1000px)`]: {
+    //     slides: { perView: 1.9, spacing: 48 }
+    //   },
+    //   [`(max-width: ${theme.breakpoints.values.sm}px)`]: {
+    //     slides: { perView: 1.3, spacing: 24 }
+    //   }
+    // }
+  })
+
   return (
     <RoadmapBox {...props}>
       <Container maxWidth='md'>
@@ -47,16 +65,44 @@ export const Roadmap = (props: any) => {
         </Stack>
       </Container>
 
-      <Stack direction='row' gap={1} sx={{ alignItems: 'center', overflowX: 'auto' }}>
-        {[1, 2, 3].map((item, index) => (
-          <RoadmapImageBox
-            key={`index${index}`}
-            src={`assets/images/phase-${index + 1}.png`}
-            alt='Phase Image'
-            loading='lazy'
-          />
-        ))}
-      </Stack>
+      <Box ref={sliderRef} className='keen-slider' sx={{ maxWidth: '1400px !important' }} alignItems='center'>
+        <RoadmapImageBox
+          className='keen-slider__slide'
+          src={`assets/images/phase-1.png`}
+          alt='Phase Image'
+          loading='lazy'
+          sx={{
+            maxWidth: '352px !important',
+            minWidth: '352px !important',
+            maxHeight: '250px !important',
+            minHeight: '250px !important'
+          }}
+        />
+        <RoadmapImageBox
+          className='keen-slider__slide'
+          src={`assets/images/phase-2.png`}
+          alt='Phase Image'
+          loading='lazy'
+          sx={{
+            maxWidth: '357px !important',
+            minWidth: '357px !important',
+            maxHeight: '250px !important',
+            minHeight: '250px !important'
+          }}
+        />
+        <RoadmapImageBox
+          className='keen-slider__slide'
+          src={`assets/images/phase-3.png`}
+          alt='Phase Image'
+          loading='lazy'
+          sx={{
+            maxWidth: '658px !important',
+            minWidth: '658px !important',
+            maxHeight: '280px !important',
+            minHeight: '280px !important'
+          }}
+        />
+      </Box>
 
       <RoadmapCoinImage src='assets/images/poope-coin.png' alt='Poope Coin' loading='lazy' />
     </RoadmapBox>

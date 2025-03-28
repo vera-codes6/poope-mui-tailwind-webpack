@@ -1,7 +1,8 @@
+import { HiArrowDownRight } from 'react-icons/hi2'
+
 import { Section, SectionTitle } from '@/components/Section'
 import { colors } from '@/theme/themePrimitives'
 import { Box, Button, Container, Stack, styled, Typography } from '@mui/material'
-import { HiArrowDownRight } from 'react-icons/hi2'
 
 const TokenomicsBox = styled(Section)(({ theme }) => ({
   alignItems: 'flex-start',
