@@ -12,5 +12,9 @@ const SectionBox = styled(Box)({
 export const Section = (props: SectionPropsType) => {
   const { sectionId, ...others } = props
 
-  return <SectionBox id={sectionId} {...others}></SectionBox>
+  return (
+    <section id={sectionId}>
+      <SectionBox {...others}></SectionBox>
+    </section>
+  )
 }

@@ -1,13 +1,11 @@
 import { styled } from '@mui/material/styles'
-import Avatar from '@mui/material/Avatar'
 import MuiDrawer, { drawerClasses } from '@mui/material/Drawer'
 import Box from '@mui/material/Box'
-import Divider from '@mui/material/Divider'
-import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import MenuContent from '@/layout/Sidebar/MenuContent'
+import { MenuContent, HeaderLogo } from '@/layout/components'
+import { colors } from '@/theme/themePrimitives'
 
-const drawerWidth = 240
+const drawerWidth = 220
 
 const Drawer = styled(MuiDrawer)({
   width: drawerWidth,
@@ -16,7 +14,8 @@ const Drawer = styled(MuiDrawer)({
   mt: 10,
   [`& .${drawerClasses.paper}`]: {
     width: drawerWidth,
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    border: 'none'
   }
 })
 
@@ -27,55 +26,24 @@ export default function Sidebar() {
       sx={{
         display: { xs: 'none', md: 'block' },
         [`& .${drawerClasses.paper}`]: {
-          backgroundColor: 'background.paper'
+          backgroundColor: colors['boldDark'],
+          padding: '24px'
         }
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          mt: 'calc(var(--template-frame-height, 0px) + 4px)',
-          py: 1.5,
-          px: 2.5,
-          alignItems: 'center'
-        }}
-      >
-        <Box component='img' src='./logo.png' alt='logo' sx={{ width: 35 }} />
-        <Typography component='h2' variant='h6' sx={{ ml: 1 }}>
-          Xrippled
-        </Typography>
-      </Box>
-      <Divider />
+      <HeaderLogo color='#ffffff' />
+
       <Box
         sx={{
           overflow: 'auto',
           height: '100%',
           display: 'flex',
-          flexDirection: 'column'
+          flexDirection: 'column',
+          mt: '50px'
         }}
       >
         <MenuContent />
       </Box>
-      <Stack
-        direction='row'
-        sx={{
-          p: 2,
-          gap: 1,
-          alignItems: 'center',
-          borderTop: '1px solid',
-          borderColor: 'divider'
-        }}
-      >
-        <Avatar sizes='small' alt='Riley Carter' src='/static/images/avatar/7.jpg' sx={{ width: 36, height: 36 }} />
-        <Box sx={{ mr: 'auto' }}>
-          <Typography variant='body2' sx={{ fontWeight: 500, lineHeight: '16px' }}>
-            Riley Carter
-          </Typography>
-          <Typography variant='caption' sx={{ color: 'text.secondary' }}>
-            riley@email.com
-          </Typography>
-        </Box>
-      </Stack>
     </Drawer>
   )
 }

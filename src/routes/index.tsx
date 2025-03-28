@@ -1,11 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { ROUTES } from '@/constants/routes'
-import { LandingLayout } from '@/layout'
+import { LandingLayout, MainLayout } from '@/layout'
 import Landing from '@/pages/Landing'
+import Dashboard from '@/pages/Dashboard'
+import { NotFound } from '@/pages/Errors/NotFound'
 
 const router = createBrowserRouter([
   {
-    path: ROUTES.LANDING,
+    path: '/',
     element: <LandingLayout />,
     children: [
       {
@@ -13,6 +15,40 @@ const router = createBrowserRouter([
         element: <Landing />
       }
     ]
+  },
+  {
+    path: '/',
+    element: <MainLayout />,
+    children: [
+      {
+        path: ROUTES.DASHBOARD,
+        element: <Dashboard />
+      },
+      {
+        path: ROUTES.TRANSACTIONS
+        // element: <Landing />
+      },
+      {
+        path: ROUTES.MARKET
+        // element: <Landing />
+      },
+      {
+        path: ROUTES.NOTIFICATION
+        // element: <Landing />
+      },
+      {
+        path: ROUTES.SETTINGS
+        // element: <Landing />
+      },
+      {
+        path: ROUTES.SUPPORT
+        // element: <Landing />
+      }
+    ]
+  },
+  {
+    path: ROUTES.NOT_FOUND,
+    element: <NotFound />
   }
 ])
 

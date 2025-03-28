@@ -1,7 +1,8 @@
-import { Button } from '@mui/material'
 import { memo } from 'react'
-import { SlMenu } from 'react-icons/sl'
 import { TfiClose } from 'react-icons/tfi'
+import { SlMenu } from 'react-icons/sl'
+
+import { Button } from '@mui/material'
 
 interface HamburgerPropsType {
   menuopen: boolean

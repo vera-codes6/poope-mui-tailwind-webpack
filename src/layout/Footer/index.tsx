@@ -1,15 +1,14 @@
 import LanguagePicker from '@/components/LanguagePicker'
-import { Typography, Stack, BottomNavigation, Divider } from '@mui/material'
+import { Typography, Stack, Divider, Box } from '@mui/material'
 import Container from '@mui/material/Container'
 import { FaRegCopyright } from 'react-icons/fa6'
-import React from 'react'
 
 export default function Footer() {
   return (
     <Container maxWidth='lg'>
       <Divider />
-      <BottomNavigation
-        component='footer'
+      <Box
+        component={'footer'}
         sx={{
           display: 'flex',
           flexDirection: { sm: 'row', xs: 'column-reverse' },
@@ -20,9 +19,10 @@ export default function Footer() {
           height: 'auto'
         }}
       >
-        <Typography variant='caption'>
-          <FaRegCopyright style={{ display: 'inline' }} /> Poope 2024
-        </Typography>
+        <Stack direction='row' alignItems='center' gap={0.5}>
+          <FaRegCopyright size={20} />
+          <Typography variant='caption'>Poope 2024</Typography>
+        </Stack>
 
         <Stack
           direction={{ sm: 'row', xs: 'column' }}
@@ -35,9 +35,9 @@ export default function Footer() {
             <Typography variant='caption'>Privacy Policy</Typography>
             <Typography variant='caption'>Terms & Conditions</Typography>
           </Stack>
-          <LanguagePicker variant='caption' />
+          <LanguagePicker signFontSize='16px' showDrop showLabel />
         </Stack>
-      </BottomNavigation>
+      </Box>
     </Container>
   )
 }

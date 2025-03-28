@@ -19,7 +19,7 @@ const CommunityTitle = styled(Typography)({
   color: colors['dark'],
   fontSize: 'clamp(55px, 10vw, 110px)',
   lineHeight: 'clamp(64px, 11vw, 120px)',
-  letterSpacing: 'clamp(3.85px, 5vw, 7.7px)',
+  letterSpacing: 'clamp(3.85px, 1vw, 7.7px)',
   textAlign: 'center',
   textTransform: 'uppercase',
 
@@ -72,6 +72,7 @@ export const Community = (props: any) => {
 
       <CommunityImageBox
         src='assets/images/human.png'
+        alt='Human'
         sx={{
           right: '2vw',
           bottom: 0,
@@ -81,6 +82,7 @@ export const Community = (props: any) => {
 
       <CommunityImageBox
         src='assets/images/elegant.png'
+        alt='Elegant'
         sx={{
           right: '18vw',
           top: '450px',
@@ -90,8 +92,9 @@ export const Community = (props: any) => {
 
       <CommunityImageBox
         src='assets/images/poope-coin.png'
+        alt='Poope Coin'
         sx={{
-          left: '30vw',
+          left: { lg: '30vw', xs: '70vw' },
           transform: 'rotate(-35deg)',
           top: '2vh',
           width: 'clamp(75px, 10vw, 115px)'
