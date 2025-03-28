@@ -1,5 +1,5 @@
 import { Hero, About, Tokenomics, Roadmap, Expanding, Updating, Community, FAQ } from '@/views/Landing'
-import MouseDown from '@/components/MouseDown'
+import ScrollDown from '@/components/ScrollDown'
 
 const Landing = () => {
   return (
@@ -12,7 +12,7 @@ const Landing = () => {
       <Updating sectionId='updating' />
       <Community sectionId='community' />
       <FAQ sectionId='faq' />
-      <MouseDown />
+      <ScrollDown />
     </>
   )
 }

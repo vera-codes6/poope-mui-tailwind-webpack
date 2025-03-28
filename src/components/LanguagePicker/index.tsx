@@ -1,38 +1,44 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import ReactCountryFlag from 'react-country-flag'
 
 import Stack from '@mui/material/Stack'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
 import { languageCodes } from '@/constants'
 import { useLocales } from '@/hooks'
 
 // import Translations from '@/components/Translations'
-import AppIcon from '../AppIcon'
 import { ButtonBase } from '@mui/material'
+import { colors } from '@/theme/themePrimitives'
+import AppIcon from '@/components/AppIcon'
 
-const LanguagePicker = (props: any) => {
+interface LanguagePickerPropsType {
+  signFontSize?: string
+  showDrop?: boolean
+  showLabel?: boolean
+}
+
+const LanguagePicker = ({ signFontSize, showDrop, showLabel }: LanguagePickerPropsType) => {
   const { currentLang, onChangeLang } = useLocales()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [selectedLanguage, setSelectedLanguage] = useState<string>(currentLang.value)
   const open = Boolean(anchorEl)
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
-  }
+  }, [])
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setAnchorEl(null)
-  }
+  }, [])
 
-  const handleLanguageChange = (language: string) => {
+  const handleLanguageChange = useCallback((language: string) => {
     setSelectedLanguage(language)
     onChangeLang(language)
     handleClose()
-  }
+  }, [])
 
   const active = languageCodes.find(e => e.value === selectedLanguage)
 
@@ -44,6 +50,20 @@ const LanguagePicker = (props: any) => {
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        sx={theme => ({
+          ...(!showDrop && {
+            padding: '10px 12px',
+            backgroundColor: colors['boldDark'],
+            borderRadius: '6px',
+            '& p': {
+              lineHeight: '20px'
+            }
+          }),
+
+          ...theme.applyStyles('light', {
+            ...(!showDrop && { backgroundColor: colors['white'] })
+          })
+        })}
       >
         <ReactCountryFlag
           countryCode={active?.code.toUpperCase() || 'US'}
@@ -51,10 +71,14 @@ const LanguagePicker = (props: any) => {
           title={active?.label}
           svg
         />
-        <Typography ml={1} {...props}>
-          {active?.value.toUpperCase()}
-        </Typography>
-        <AppIcon name='down' />
+
+        {showLabel && (
+          <Typography ml={1} fontSize={signFontSize}>
+            {active?.value.toUpperCase()}
+          </Typography>
+        )}
+
+        {showDrop && <AppIcon name='down' />}
       </ButtonBase>
 
       <Menu
@@ -79,7 +103,7 @@ const LanguagePicker = (props: any) => {
               title={language.label}
               svg
             />
-            <Typography sx={{ ml: 1 }} {...props}>
+            <Typography sx={{ ml: 1 }} fontSize={signFontSize}>
               {language.label}
             </Typography>
           </MenuItem>

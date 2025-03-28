@@ -1,10 +1,10 @@
-import QATabs from '@/components/QATabs'
+import { QATabs } from '@/components/Tabs'
 import { Section, SectionTitle } from '@/components/Section/'
 import { colors } from '@/theme/themePrimitives'
 import { Button, Container, Stack, styled, Typography } from '@mui/material'
 
 const ExpandingBox = styled(Section)(({ theme }) => ({
-  justifyContent: 'center',
+  paddingTop: '150px',
   background: 'url(/assets/images/bg-pattern.png) repeat',
 
   backgroundColor: colors['boldLight'],
@@ -62,7 +62,11 @@ export const Expanding = (props: any) => {
       >
         <Stack
           direction='row'
-          sx={{ justifyContent: 'space-between', alignItems: 'center', width: { md: '100%', xs: 'auto' } }}
+          sx={{
+            justifyContent: { lg: 'space-between', xs: 'center' },
+            alignItems: 'center',
+            width: { md: '100%', xs: 'auto' }
+          }}
         >
           <SectionTitle gap={2.5} text='FIND OUT' boldText='More' />
 

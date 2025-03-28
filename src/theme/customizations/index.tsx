@@ -56,6 +56,37 @@ export const customizations: Components<Theme> = {
           },
           {
             props: {
+              color: 'primary',
+              variant: 'outlined'
+            },
+            style: {
+              fontSize: '18px',
+              fontWeight: 500,
+              border: '1px solid',
+              borderColor: colors['white'],
+              backgroundColor: '#eed6b7',
+              color: colors['black'],
+              padding: '16px 24px',
+              textTransform: 'none',
+              '&:hover': {
+                borderColor: '#ffd7a4',
+                backgroundColor: '#dec29e'
+              },
+
+              ...theme.applyStyles('dark', {
+                borderColor: '#313131',
+                color: colors['white'],
+                backgroundColor: colors['dark'],
+
+                '&:hover': {
+                  borderColor: '#5f5f5f',
+                  backgroundColor: '#2D2D2D'
+                }
+              })
+            }
+          },
+          {
+            props: {
               color: 'secondary',
               variant: 'outlined'
             },
@@ -106,6 +137,26 @@ export const customizations: Components<Theme> = {
                 borderColor: colors['white']
               })
             }
+          },
+          {
+            props: {
+              variant: 'text',
+              color: 'secondary'
+            },
+            style: {
+              backgroundColor: colors['boldDark'],
+              color: colors['white'],
+              borderRadius: '6px',
+              padding: '10px 12px',
+              textTransform: 'none',
+              lineHeight: '20px',
+              border: 'none',
+              ...theme.applyStyles('light', {
+                color: colors['dark'],
+                backgroundColor: colors['white'],
+                borderColor: colors['white']
+              })
+            }
           }
         ]
       })
@@ -121,6 +172,37 @@ export const customizations: Components<Theme> = {
         ...theme.applyStyles('dark', {
           borderColor: colors['white']
         })
+      })
+    }
+  },
+  MuiCard: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        variants: [
+          {
+            props: {
+              variant: 'outlined',
+              color: 'primary'
+            },
+            style: {
+              borderRadius: '16px',
+              borderColor: 'transparent',
+              border: '1px solid',
+              backgroundColor: colors['boldDark'],
+
+              ...theme.applyStyles('light', {
+                backgroundColor: colors['white']
+              })
+            }
+          }
+        ]
+      })
+    }
+  },
+  MuiContainer: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        paddingInline: '20px'
       })
     }
   }
