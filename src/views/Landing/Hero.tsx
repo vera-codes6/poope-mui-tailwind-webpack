@@ -48,7 +48,7 @@ export const Hero = (props: any) => {
             Solana
           </BannerTypography>
 
-          <HeroImageBox src='assets/images/poope-coin.png' alt='Poope Coin' loading='lazy' />
+          <HeroImageBox src='assets/images/poope-coin.webp' alt='Poope Coin' loading='lazy' />
         </Box>
 
         <Typography variant='body1' sx={{ paddingTop: '70px', maxWidth: '940px', textAlign: 'center' }}>

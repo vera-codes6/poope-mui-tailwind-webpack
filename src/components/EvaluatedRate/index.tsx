@@ -6,13 +6,18 @@ import { alpha } from '@mui/material/styles'
 import { colors } from '@/theme/themePrimitives'
 import { toNumberTag } from '@/utils'
 
-interface PriceRatePropsType {
+interface EvaluatedRatePropsType {
   price: number
   fontSize?: string
   type?: 'contained' | 'outlined'
 }
 
-export default function PriceRate({ price, fontSize = '16px', type = 'contained', ...other }: PriceRatePropsType) {
+export default function EvaluatedRate({
+  price,
+  fontSize = '16px',
+  type = 'contained',
+  ...other
+}: EvaluatedRatePropsType) {
   const formattedPrice = useMemo(() => toNumberTag(price, 5, price > 0 ? '+' : '', '%'), [price])
   const buttonType = useMemo(() => (price > 0 ? 'success' : 'failed'), [price])
   const iconButton = useMemo(

@@ -1,9 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { ROUTES } from '@/constants/routes'
 import { LandingLayout, MainLayout } from '@/layout'
-import Landing from '@/pages/Landing'
-import Dashboard from '@/pages/Dashboard'
 import { NotFound } from '@/pages/Errors/NotFound'
+
+import { lazy } from 'react'
+
+const Landing = lazy(() => import('@/pages/Landing'))
+const Dashboard = lazy(() => import('@/pages/Dashboard'))
 
 const router = createBrowserRouter([
   {

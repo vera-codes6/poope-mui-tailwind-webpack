@@ -41,6 +41,7 @@ export const Roadmap = (props: any) => {
       perView: 'auto',
       spacing: 10
     }
+
     // },
     // breakpoints: {
     //   [`(max-width: 1000px)`]: {
@@ -104,7 +105,7 @@ export const Roadmap = (props: any) => {
         />
       </Box>
 
-      <RoadmapCoinImage src='assets/images/poope-coin.png' alt='Poope Coin' loading='lazy' />
+      <RoadmapCoinImage src='assets/images/poope-coin.webp' alt='Poope Coin' loading='lazy' />
     </RoadmapBox>
   )
 }

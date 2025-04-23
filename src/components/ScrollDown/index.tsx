@@ -31,7 +31,8 @@ const ScrollDown = () => {
 
       if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight) {
         setCurrentSectionIndex(idList.length - 1)
-        return
+        
+return
       }
 
       for (let i = 0; i < idList.length; i++) {
@@ -61,7 +62,7 @@ const ScrollDown = () => {
       component={Stack}
       direction='column'
       gap={1}
-      sx={{ alignItems: 'center', position: 'fixed', bottom: '30px', left: 'calc(50vw - 16px)' }}
+      sx={{ alignItems: 'center', position: 'fixed', bottom: '30px', left: 'calc(50vw - 11px)', zIndex: 10000 }}
       onClick={handleButtonClick}
     >
       {currentSectionIndex < idList.length - 1 ? (

@@ -3,6 +3,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 import { localStorageGetItem } from '@/utils'
 import { defaultLang } from './configLang'
+
 // import translationEn from './langs/en.json'
 // import translationFr from './langs/fr.json'
 
