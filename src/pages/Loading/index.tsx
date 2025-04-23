@@ -10,9 +10,6 @@ export const Loading = (props: any) => {
   return (
     <LoadingBox sectionId='loading' {...props}>
       <img src='/assets/images/loading.gif' alt='Loaing...' loading='lazy' />
-      <Typography variant='h2' textTransform='uppercase'>
-        Loading...
-      </Typography>
     </LoadingBox>
   )
 }

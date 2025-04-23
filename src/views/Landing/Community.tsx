@@ -91,7 +91,7 @@ export const Community = (props: any) => {
       />
 
       <CommunityImageBox
-        src='assets/images/poope-coin.png'
+        src='assets/images/poope-coin.webp'
         alt='Poope Coin'
         sx={{
           left: { lg: '30vw', xs: '70vw' },
