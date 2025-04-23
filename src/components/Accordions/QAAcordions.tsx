@@ -55,7 +55,8 @@ const StyledAccordion = styled(Accordion)(({ theme }) => ({
 
 const QAAcordion = (props: QAAcordionProps) => {
   const { title, answer, bold, ...others } = props
-  return (
+  
+return (
     <StyledAccordion {...others}>
       <AccordionSummary expandIcon={<AppIcon name='down' />}>
         <Typography variant='body1' fontSize='clamp(18px, 3vw, 24px)' fontWeight='500'>

@@ -1,10 +1,12 @@
 import { useCallback, useState } from 'react'
 
 import { colors } from '@/theme/themePrimitives'
-import { Box, Stack, styled, Tab, Tabs, Typography } from '@mui/material'
+import { Box, ButtonBase, Menu, MenuItem, Stack, styled, Tab, Tabs, Typography } from '@mui/material'
 
-import { QAAcordions } from '../Acordions'
+import { QAAcordions } from '../Accordions'
 import AppIcon from '../AppIcon'
+import { useDeviceType } from '@/hooks'
+import { QATabList } from '@/constants'
 
 const StyledTabs = styled(Tabs)(({ theme }) => ({
   // flexShrink: 0,
@@ -76,24 +78,51 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   }
 }))
 
+const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+  width: 'calc(100vw - 40px)',
+  maxWidth: '600px',
+  justifyContent: 'center',
+  paddingBlock: '12px',
+
+  '& .MuiTypography-root': {
+    fontSize: '20px'
+  }
+}))
+
 const TabPanel = ({ children, value, index }: { children: any; value: number; index: number }) => {
   return value === index && <Box>{children}</Box>
 }
 
-const LabelItem = ({ text }: { text: string }) => {
+const LabelItem = ({ text, showIcon = true }: { text: string; showIcon?: boolean }) => {
   return (
     <Stack direction='row'>
       <Typography>{text}</Typography>
-      <AppIcon name='down' />
+      {showIcon && <AppIcon name='down' />}
     </Stack>
   )
 }
 
 export const QATabs = () => {
+  const { isMobile } = useDeviceType()
   const [tabValue, setTabValue] = useState<number>(0)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
 
   const handleTabChange = useCallback((e: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
+  }, [])
+
+  const handleMenuClick = useCallback((event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget)
+  }, [])
+
+  const handleClose = useCallback(() => {
+    setAnchorEl(null)
+  }, [])
+
+  const handleMenuChange = useCallback((value: number) => {
+    setTabValue(value)
+    handleClose()
   }, [])
 
   return (
@@ -104,12 +133,53 @@ export const QATabs = () => {
       width='100%'
       sx={{ justifyContent: 'space-between', alignItems: { md: 'flex-start', xs: 'center' } }}
     >
-      <StyledTabs orientation='vertical' value={tabValue} onChange={handleTabChange}>
-        <StyledTab id='vertical-tab-1' label={<LabelItem text='Frequently Asked Questions' />} disableRipple />
-        <StyledTab id='vertical-tab-2' label={<LabelItem text='Resources' />} disableRipple />
-        <StyledTab id='vertical-tab-3' label={<LabelItem text="How to's" />} disableRipple />
-        <StyledTab id='vertical-tab-4' label={<LabelItem text='Documentation' />} disableRipple />
+      <StyledTabs
+        id='tab-menu-button'
+        aria-controls={open ? 'tab-menu' : undefined}
+        aria-haspopup='true'
+        aria-expanded={open ? 'true' : undefined}
+        orientation='vertical'
+        value={tabValue}
+        onChange={handleTabChange}
+        onClick={handleMenuClick}
+      >
+        {QATabList.map((text, index) => (
+          <StyledTab
+            key={`index${index}`}
+            id={`vertical-tab-${index}`}
+            label={<LabelItem text={text} />}
+            disableRipple
+          />
+        ))}
       </StyledTabs>
+
+      {isMobile && (
+        <Menu
+          id='tab-menu'
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'tab-menu-button'
+          }}
+          sx={{
+            mt: 1,
+            '& .MuiList-root': {
+              py: '16px'
+            }
+          }}
+        >
+          {QATabList.map((text, index) => (
+            <StyledMenuItem
+              key={`index${index}`}
+              onClick={() => handleMenuChange(index)}
+              sx={{ display: 'flex', alignItems: 'center' }}
+            >
+              <LabelItem text={text} showIcon={false} />
+            </StyledMenuItem>
+          ))}
+        </Menu>
+      )}
 
       <TabPanel value={tabValue} index={0}>
         <QAAcordions />

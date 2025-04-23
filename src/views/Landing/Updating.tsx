@@ -22,6 +22,7 @@ export const Updating = (props: any) => {
       perView: 'auto',
       spacing: 50
     }
+
     // },
     // breakpoints: {
     //   [`(max-width: 1000px)`]: {

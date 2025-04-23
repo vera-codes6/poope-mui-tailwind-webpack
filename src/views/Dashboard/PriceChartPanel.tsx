@@ -45,7 +45,7 @@ export const PriceChartPanel = () => {
   }, [])
 
   return (
-    <Stack direction='column' gap='20px'>
+    <Stack direction='column'>
       <Stack direction='row' justifyContent='space-between'>
         <TypeChangeTabs value={chartTypeValue} onChange={handleTypeChange}>
           <TypeChangeTab label={<StyledTypography color='text.primary'>Price</StyledTypography>} />
@@ -78,7 +78,7 @@ export const PriceChartPanel = () => {
         </Stack>
       </Stack>
 
-      <PriceChart />
+      <PriceChart chartType={chartTypeValue} />
     </Stack>
   )
 }

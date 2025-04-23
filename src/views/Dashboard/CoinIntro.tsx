@@ -1,4 +1,4 @@
-import PriceRate from '@/components/PriceRate'
+import EvaluatedRate from '@/components/EvaluatedRate'
 import { buttonList, coinIntroList } from '@/constants'
 import { useDeviceType } from '@/hooks'
 import { colors } from '@/theme/themePrimitives'
@@ -54,7 +54,7 @@ export const CoinIntro = () => {
               {toNumberTag(62340.48, 2, '$')}
             </Typography>
 
-            <PriceRate price={1.2} fontSize='14px' />
+            <EvaluatedRate price={1.2} fontSize='14px' />
           </Stack>
         </Stack>
 
@@ -82,7 +82,7 @@ export const CoinIntro = () => {
                   <Typography variant='subtitle2' component={'p'} color={colors['gray']} fontSize='14px'>
                     {item.date}
                   </Typography>
-                  <PriceRate price={item.price} type='outlined' />
+                  <EvaluatedRate price={item.price} type='outlined' />
                 </ListItem>
               </Fragment>
             ))}

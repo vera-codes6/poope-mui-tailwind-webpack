@@ -9,7 +9,8 @@ export const toNumber = (value?: number, fixed = 5, asNumber = false) => {
     if (!asNumber) {
       fixed = 2
     }
-    return Number(0).toFixed(fixed)
+    
+return Number(0).toFixed(fixed)
   }
   const formatted = value.toFixed(fixed)
 
@@ -20,7 +21,8 @@ export const toNumberTag = (value = 0, fixed = 5, prefix = '', suffix = '') => {
   if (!value || isNaN(value)) {
     return '0.00'
   }
-  return (
+  
+return (
     <NumericFormat
       value={toNumber(value, fixed, true)}
       displayType='text'

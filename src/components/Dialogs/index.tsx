@@ -15,7 +15,8 @@ const Dialogs: FC = () => {
   const { activeDialog, closeDialog } = useDialog()
 
   const DialogComponent = activeDialog ? dialogComponents[activeDialog as DialogName] : null
-  return (
+  
+return (
     <>
       {DialogComponent && (
         <Dialog className={mode} open={!!activeDialog} onClose={closeDialog}>

@@ -49,6 +49,8 @@ export const BlogCardList = [
   }
 ]
 
+export const QATabList = ['Frequently Asked Questions', 'Resources', "How to's", 'Documentation']
+
 export const QAAcordionContentList: QAContentType[] = [
   {
     title: 'A hale holds nearly 30% of Poope Coin Supply! Is this true?',
